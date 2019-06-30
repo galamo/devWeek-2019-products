@@ -1,10 +1,11 @@
 const express = require("express");
-
+const cors = require("cors");
 // 1. listen to port
 // 2. load entries
 
 const app = express();
 // access env var
+app.use(cors());
 const port = process.env.PORT || 2000;
 function loadApi() {
   return new Promise((resolve, reject) => {

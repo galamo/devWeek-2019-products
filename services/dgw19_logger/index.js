@@ -5,8 +5,8 @@ const logger = winston.createLogger({
   format: winston.format.json(),
   defaultMeta: { service: "user-service" },
   transports: [
-    new winston.transports.File({ filename: "logs/error.log", level: "error" }),
-    new winston.transports.File({ filename: "logs/info.log" })
+    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.File({ filename: "info.log" })
   ]
 });
 
@@ -14,4 +14,3 @@ module.exports = {
   info: logger.info,
   error: logger.error
 };
-

@@ -3,16 +3,17 @@ const data = require("./data");
 class userController {
   static loadEntries(infra) {
     console.log("lading users entries.");
-    const { app, logger } = infra;
+    const { app, logger, db } = infra;
     if (!app) return;
     const routes = [
       {
         path: "/users",
         method: "get",
-        callback: (req, res, next) => {
-          console.log(logger.info);
+        callback: async (req, res, next) => {
+          const { app, logger, db } = infra;
           logger.error("users request..");
-          res.json(data.users);
+          const result = await db.getUsers();
+          res.json(result);
         }
       }
     ];
